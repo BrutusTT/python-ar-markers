@@ -71,7 +71,7 @@ def detect_markers(img):
 
         _, warped_bin = cv2.threshold(warped_gray, 127, 255, cv2.THRESH_BINARY)
         marker = warped_bin.reshape(
-            [MARKER_SIZE, warped_size / MARKER_SIZE, MARKER_SIZE, warped_size / MARKER_SIZE]
+            [MARKER_SIZE, int(warped_size / MARKER_SIZE), MARKER_SIZE, int(warped_size / MARKER_SIZE)]
         )
         marker = marker.mean(axis=3).mean(axis=1)
         marker[marker < 127] = 0
